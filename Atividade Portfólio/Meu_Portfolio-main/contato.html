@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="WL.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+ <main>
+        <h1>Contato</h1>
+        <p>Gostou do meu perfil? Me mande uma mensagem preenchendo o formulário abaixo.</p>
+        
+        <form action="#" method="post">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="texto">Mensagem:</label>
+            <input type="text">
+
+            <label for="assunto">Assunto da Mensagem:</label>
+            <select id="assunto" name="assunto">
+
+                <option value="freelance">Projeto Freelance</option>
+
+                <option value="estagio">Oportunidade de Estágio</option>
+            
+                <option value="duvida">Dúvida Geral</option>
+                <option value="outro">Outros</option>
+            </select>
+
+            <p style="margin-bottom: 10px;">Motivo principal:</p>
+            <input type="radio" id="urgente" name="prioridade" value="urgente" style="width: auto;">
+            <label for="urgente" style="margin-right: 15px;">Urgente</label>
+            
+            <input type="radio" id="normal" name="prioridade" value="normal" checked style="width: auto;">
+            <label for="normal">Normal</label>
+            
+            <br><br>
+
+            <input type="submit" value="Enviar Mensagem">
+        </form>
+        <br><br>
+        <a href="index.html" class="btn-voltar">&lt;- Voltar ao Início</a>
+
+          <br><br><br><br><br>
+        
+        <div class="footer-content">
+        <p>&copy; 2026 Wenderson | Desenvolvedor de Sistemas</p>
+        <div class="github-footer">
+            <a href="https://github.com/WendersonSousaLeal" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo GitHub" class="github-icon">
+                Meu GitHub
+            </a>
+                <a href="https://www.linkedin.com/in/wendersonleal/" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="Logo LinkedIn" class="github-icon">
+                    Meu LinkedIn
+            <a href="mailto:wendersonsousaleal@gmail.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Logo Email" class="github-icon">
+                Meu Email
+            </a>
+        </div>
+    </div>
+    </main>
+    
+        
+
+</body>
+</html>

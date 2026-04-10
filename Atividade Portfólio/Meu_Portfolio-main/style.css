@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    color: #e0e0e0; /* Texto claro */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column; /* Empilha o menu e o contúdo verticalmente */
+}
+
+/* MENU LATERAL */
+aside {
+    width: 250px;
+    background-color: #1e1e1e;
+    padding: 30px 20px;
+    border-right: 2px solid #3700ff; /* Detalhe Verde Neon */
+    position: fixed;
+    height: 100%;
+}
+
+aside h2 {
+    text-shadow: 0 0 5px #3700ff, 0 0 10px #3700ff, 0 0 20px #3700ff; 
+    color: #0051ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    margin-bottom: 15px;
+}
+
+nav ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2a2a2a;
+    color: #0004ff;
+    padding-left: 20px; /* Efeito de deslizar para a direita */
+}
+
+
+/* Container da foto para dar um destaque */
+.profile-container {
+    margin: 20px 0;
+}
+
+.profile-container img {
+    border: 3px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+/* Estilo das etiquetas de habilidades */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.skill-tag {
+    background-color: #2a2a2a;
+    color: #00a2ff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.skill-tag:hover {
+    border-color: #00a2ff;
+    transform: translateY(-3px);
+}
+
+main {
+    margin-left: 250px; /* Deixa espaço para o menu lateral */
+    padding: 50px;
+    width: calc(100% - 250px);
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #00eeff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+p, li {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* TABELAS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: #1e1e1e;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    background-color: #2a2a2a;
+    color: #00ffff;
+}
+
+
+/* MÍDIAS (Imagens, Áudio, Vídeo) */
+img {
+    display: flex;
+    border-radius: 8px;
+    border: 2px solid #333;
+    max-width: 100%;
+}
+
+audio, video {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* LAYOUT DA PÁGINA SOBRE MIM */
+.sobre-container {
+    display: flex;               /* Ativa o Flexbox para alinhar lado a lado */
+    align-items: center;         /* Centraliza a imagem e o texto verticalmente */
+    gap: 40px;                   /* Espaço entre o texto e a foto */
+    margin-top: 20px;
+}
+
+.sobre-texto {
+    flex: 1;                     /* Faz o texto ocupar o espaço que sobrar */
+}
+
+.sobre-img {
+    flex: 0 0 300px;             /* Define a largura máxima da área da imagem */
+}
+
+.sobre-img img {
+    width: 100%;                 /* Imagem ocupa 100% da caixa dela */
+    border-radius: 15px;         /* Bordas mais arredondadas */
+    border: 3px solid #0011ff;   /* Borda verde neon */
+    box-shadow: 0 0 20px rgb(26, 47, 238); /* Brilho em volta da foto */
+    transition: transform 0.3s;
+}
+
+.sobre-img img:hover {
+    transform: scale(1.05);      /* Dá um leve zoom na foto ao passar o mouse */
+}
+
+/* FORMULÁRIO */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #0011ff;
+}
+
+input[type="submit"] {
+    background-color: #ffffff;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1900ff;
+    color: #ffffff;
+}
+button {
+    background-color: #00ff88;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: 0.3s;
+    
+}
+.btn-voltar {
+align-self: flex-start; /* Mantém o botão na esquerda */
+    margin-top: auto;      
+    background-color: transparent;
+    color: #00d9ff;
+    border: 2px solid #0011ff;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-voltar:hover {
+    background-color: #0026ff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgb(38, 0, 255);
+}
+
+/* GRID DE PROJETOS */
+.projeto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* CARTÃO INDIVIDUAL */
+.projeto-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.projeto-card:hover {
+    border-color: #0004ff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+}
+
+.projeto-card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    border: none; /* Remove a borda lateral que usamos nas seções */
+    padding-left: 0;
+}
+
+.projeto-card p {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-bottom: 20px;
+}
+
+/* LINK PARA O GITHUB */
+.repo-link {
+    color: #00fff2;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    font-family: 'Fira Code', monospace;
+}
+
+.repo-link:hover {
+    text-decoration: underline;
+}
+
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.footer-content p {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* LINK E ÍCONE DO GITHUB NO FOOTER */
+.github-footer a {
+    color: #0077ff;
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre a imagem e o texto */
+    transition: 0.3s;
+}
+
+.github-footer a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #0026ff;
+}
+
+.github-icon {
+    width: 24px;   /* Tamanho do ícone */
+    height: 24px;
+    filter: invert(1); /* Inverte a cor do ícone de preto para branco para combinar com o tema escuro */
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Empilha o menu e o conteúdo */
+    }
+
+    /* Ajuste do Menu Lateral para Mobile */
+    aside {
+        width: 100%;
+        height: auto;
+        position: relative; /* Para de flutuar na esquerda */
+        border-right: none;
+        border-bottom: 2px solid #3700ff;
+        padding: 20px;
+    }
+
+    aside h2 {
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap; /* Faz os itens do menu dobrarem a linha se necessário */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin-bottom: 0;
+    }
+
+    /* Ajuste do Conteúdo Principal */
+    main {
+        margin-left: 0; /* Remove o recuo do menu lateral */
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Diminui o título para caber na tela */
+    }
+
+    /* Ajuste da Seção Sobre Mim */
+    .sobre-container {
+        flex-direction: column; /* Foto em cima, texto embaixo */
+        text-align: center;
+    }
+
+    .sobre-img {
+        flex: 0 0 auto;
+        width: 200px; /* Reduz um pouco a foto no mobile */
+        margin: 0 auto;
+    }
+
+    /* Tabelas Responsivas */
+    table {
+        display: block;
+        overflow-x: auto; /* Adiciona scroll horizontal se a tabela for larga */
+        white-space: nowrap;
+    }
+
+    /* Grid de Projetos e Habilidades */
+    .projeto-grid {
+        grid-template-columns: 1fr; /* Um card por linha */
+    }
+
+    .skills-grid {
+        justify-content: center;
+    }
+
+    /* Ajuste de Mídias */
+    audio, video {
+        max-width: 100%;
+    }
+
+    /* Ajuste do Rodapé */
+    .github-footer {
+        flex-direction: column; /* Links um embaixo do outro no rodapé */
+        align-items: center;
+        gap: 15px;
+    }
+}
