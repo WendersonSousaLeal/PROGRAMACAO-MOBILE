@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #000000;
+        }
+        span {
+            text-shadow: 2px 2px 4px #000000;
+            color: #eec200;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #8f8f8ff5;
+            border-radius: 10px;
+         }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00fac4;
+            color: black;
+        }
+        #resultado {
+            font-size: 1.5em;
+            margin-top: 20px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <h1>Calculador de Média em Java<span>Script</span></h1>
+
+    <h2>Digite a sua primeira nota:</h2>
+    <input type="number" id="nota1" placeholder="Digite sua primeira nota">
+
+    <br>
+
+    <h2>Digite a sua segunda nota:</h2>
+    <input type="number" id="nota2" placeholder="Digite sua segunda nota">
+    
+<br><br>
+    <button onclick="calcular() ">Calcular Média</button>
+
+    <p id="resultado"></p>
+
+    <script>
+
+function calcular() {
+    var nota1 = parseFloat(document.getElementById("nota1").value);
+    var nota2 = parseFloat(document.getElementById("nota2").value);
+
+    var media = (nota1 + nota2) / 2;
+
+  if (isNaN(nota1) || nota1 < 0 || nota1 > 10 || isNaN(nota2) || nota2 < 0 || nota2 > 10) {
+        document.getElementById("resultado").innerHTML = "Por favor, insira notas válidas entre 0 e 10.";
+        return;
+    }
+    
+    document.getElementById("resultado").innerHTML = "Sua média é: " + media.toFixed(1);
+
+    if (media >= 7) {
+        document.getElementById("resultado").innerHTML += " Parabéns, você foi aprovado!";
+        document.getElementById("resultado").style.color = "green";
+    } 
+    else if (media  >= 5) {
+        document.getElementById("resultado").innerHTML += " Você está de recuperação.";
+        document.getElementById("resultado").style.color = "orange";
+    }
+    else (media < 5);{
+        document.getElementById("resultado").innerHTML += " Infelizmente, você foi reprovado.";
+        document.getElementById("resultado").style.color = "red";
+    }
+
+    };
+    </script>
+    
+</body>
+</html>
