@@ -4,7 +4,7 @@ Ajustado para o SEU banco real (`escola.sql` que você enviou), tabela `alunos` 
 tabela `contatos` (telefone/e-mail), com o campo `status` ('A'/'I') que você já tinha.
 
 - Pasta da API: `app_scholar_api`
-- IP do computador: `172.21.80.1`
+- IP do computador: `SEU-IP`
 
 ## 1. Banco de dados
 Você **não precisa criar nada** — seu banco `escola` já existe e já tem o campo `status`.
