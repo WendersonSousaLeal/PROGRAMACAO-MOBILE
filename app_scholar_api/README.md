@@ -17,7 +17,7 @@ Só confirme que ele está importado no phpMyAdmin do seu XAMPP.
    - `http://localhost/app_scholar_api/teste_conexao.php` → "Conexão realizada com sucesso!"
    - `http://localhost/app_scholar_api/alunos.php` → JSON com os alunos ativos
 3. Teste pelo celular (mesma rede Wi-Fi):
-   - `http://172.21.80.1/app_scholar_api/alunos.php`
+   - `http://SEU-IP/app_scholar_api/alunos.php`
 
 ## 3. Campos usados (baseados no seu banco)
 - `id` (id_alunos), `nome`, `cpf`, `ra`, `data_nascimento`, `numero_casa`,
