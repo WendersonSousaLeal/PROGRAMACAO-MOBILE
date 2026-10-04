@@ -62,8 +62,8 @@ PROGRAMACAO-MOBILE/
 ├── app_scholar/                 # Aplicativo mobile App_Scholar (React Native / Expo)
 ├── app_scholar_api/             # API em PHP que acessa o banco de dados
 ├── Banco de Dados Escola/       # Scripts do banco de dados `escola`
-├── Atividade 4/
-├── Atividade 5/
+├── site-academia-acadefit/      # Site da academia AcadeFit
+├── calculadora-media/           # Calculadora de média em JavaScript
 ├── Atividade Portfólio/
 │   └── Meu_Portfolio-main/
 ├── Lista de exercicio 1/
@@ -79,8 +79,8 @@ PROGRAMACAO-MOBILE/
   - `teste_conexao.php`: teste da conexão com o banco.
 - **Banco de Dados Escola/**: scripts SQL do banco `escola`. A modelagem completa está no repositório [MDBD](https://github.com/WendersonSousaLeal/MDBD).
 - **Lista de exercicio 1/** e **Lista de exercício 2/**: exercícios de lógica de programação desenvolvidos em VisuAlg.
-- **Atividade 4/**: site da academia **AcadeFit | Supere seus limites**.
-- **Atividade 5/**: calculadora de média desenvolvida em JavaScript.
+- **site-academia-acadefit/**: site da academia **AcadeFit | Supere seus limites**.
+- **calculadora-media/**: calculadora de média desenvolvida em JavaScript.
 - **Atividade Portfólio/Meu_Portfolio-main/**: portfólio pessoal de Wenderson Sousa Leal.
 
 ## Requisitos
