@@ -1,113 +1,53 @@
-# App_Scholar
+# App_Scholar — CRUD de Alunos (banco `escola` já existente)
 
-Sistema acadêmico escolar desenvolvido em **React Native (Expo)**, com back-end em **PHP** e banco de
-dados **MySQL**. Projeto acadêmico da disciplina de Desenvolvimento de Sistemas (Etec).
+Ajustado para o SEU banco real (`escola.sql` que você enviou), tabela `alunos` +
+tabela `contatos` (telefone/e-mail), com o campo `status` ('A'/'I') que você já tinha.
 
-## O que o app faz
+- Pasta da API: `app_scholar_api`
+- IP do computador: `172.21.80.1`
 
-O App_Scholar gerencia o dia a dia acadêmico de uma escola: alunos, professores, coordenadores, cursos,
-disciplinas, turmas, matrículas, avaliações, responsáveis e boletins. A partir da tela inicial (Home), o
-usuário navega para cada um desses módulos, onde pode consultar, cadastrar e editar registros — e, no
-caso dos alunos, também "excluir" (de forma lógica, sem apagar o dado do banco).
+## 1. Banco de dados
+Você **não precisa criar nada** — seu banco `escola` já existe e já tem o campo `status`.
+Só confirme que ele está importado no phpMyAdmin do seu XAMPP.
 
-## Tecnologias
+## 2. API PHP
+1. Copie a pasta `app_scholar_api` inteira para `C:\xampp\htdocs\`.
+   Resultado: `C:\xampp\htdocs\app_scholar_api\...`
+2. Teste no navegador do computador:
+   - `http://localhost/app_scholar_api/teste_conexao.php` → "Conexão realizada com sucesso!"
+   - `http://localhost/app_scholar_api/alunos.php` → JSON com os alunos ativos
+3. Teste pelo celular (mesma rede Wi-Fi):
+   - `http://172.21.80.1/app_scholar_api/alunos.php`
 
-| Camada | Tecnologia |
-|---|---|
-| Front-end | React Native + Expo (Expo Snack) |
-| Navegação | React Navigation (Native Stack) |
-| Back-end / API | PHP + PDO |
-| Banco de dados | MySQL (rodando em XAMPP) |
-| Comunicação | `fetch()` (HTTP), JSON |
+## 3. Campos usados (baseados no seu banco)
+- `id` (id_alunos), `nome`, `cpf`, `ra`, `data_nascimento`, `numero_casa`,
+  `complemento`, `telefone`, `email`, `status`
+- `telefone` e `email` ficam na tabela `contatos`, ligada por `id_contatos`.
+  A API cuida de criar/atualizar o contato automaticamente ao cadastrar/editar.
+- Ao cadastrar, informe a data no formato `AAAA-MM-DD` (ex.: `2010-05-20`).
 
-## Arquitetura
+## 4. Expo Snack
+1. Copie os arquivos de `app_scholar_snack` para o seu projeto no Snack, mantendo a estrutura:
+   - `App.js`
+   - `src/services/api.js`
+   - `src/screens/ConsultaAlunosScreen.js`
+   - `src/screens/CadastroAlunoScreen.js`
+   - `src/screens/EditarAlunoScreen.js`
+2. Garanta as dependências: `@react-navigation/native`, `@react-navigation/native-stack`,
+   `react-native-screens`, `react-native-safe-area-context`.
+3. Abra pelo Expo Go no celular, na mesma rede Wi-Fi do PC.
+4. Na tela "Alunos", toque em **Buscar alunos**.
 
-```
-App_Scholar (React Native / Expo)
-      | fetch()
-      v
-API PHP (app_scholar_api) — protegida por cors.php
-      | PDO
-      v
-MySQL (banco: escola)
-```
+## 5. Fluxo (regra da exclusão lógica)
+App_Scholar (fetch) → API PHP (PDO) → MySQL (`escola`)
 
-O aplicativo nunca acessa o banco de dados diretamente. Toda operação passa pela API PHP, que é a única
-camada com permissão de conversar com o MySQL.
+- `alunos.php` → READ → `SELECT ... WHERE status = 'A'` (com JOIN em `contatos`)
+- `cadastrar_aluno.php` → CREATE → insere em `contatos` e depois em `alunos` (POST)
+- `editar_aluno.php` → UPDATE → atualiza `alunos` e `contatos` (PUT)
+- `desativar_aluno.php` → EXCLUSÃO LÓGICA → `UPDATE alunos SET status = 'I'` (PUT)
+  **Nunca** é usado `DELETE FROM alunos`.
 
-## Estrutura de pastas do projeto (Expo Snack)
-
-```
-App.js                          -> registra todas as rotas de navegação
-src/
-  services/
-    api.js                      -> endereço (IP) da API PHP
-  screens/
-    HomeScreen.js                -> menu principal
-    SobreScreen.js                -> sobre o app
-    ConsultaAlunosScreen.js       -> lista, edita e exclui alunos
-    CadastroAlunoScreen.js        -> cadastra um novo aluno
-    EditarAlunoScreen.js          -> edita um aluno existente
-    ... (o mesmo padrão Consulta/Cadastro/Editar se repete para
-         Professores, Coordenadores, Cursos, Disciplinas, Turmas
-         e Responsáveis)
-    ConsultaMatriculasScreen.js / CadastroMatriculaScreen.js
-    ConsultaAvaliacoesScreen.js / CadastroAvaliacaoScreen.js
-    ConsultaBoletinsScreen.js     -> somente consulta
-```
-
-## Módulos e operações disponíveis
-
-| Módulo | Consultar | Cadastrar | Editar | Excluir |
-|---|---|---|---|---|
-| Alunos | ✅ | ✅ | ✅ | ✅ (lógica) |
-| Professores | ✅ | ✅ | ✅ | — |
-| Coordenadores | ✅ | ✅ | ✅ | — |
-| Cursos | ✅ | ✅ | ✅ | — |
-| Disciplinas | ✅ | ✅ | ✅ | — |
-| Turmas | ✅ | ✅ | ✅ | — |
-| Responsáveis | ✅ | ✅ | ✅ | — |
-| Matrículas | ✅ | ✅ | — | — |
-| Avaliações | ✅ | ✅ | — | — |
-| Boletins | ✅ | — | — | — |
-
-**Só o módulo de Alunos tem exclusão**, e ela é sempre **lógica**: o registro nunca é apagado do banco.
-Em vez de `DELETE`, o campo `status` do aluno muda de `'A'` (ativo) para `'I'` (inativo), e a consulta
-principal passa a ignorá-lo automaticamente (`WHERE status = 'A'`).
-
-## Como o app se comunica com o banco
-
-1. O usuário interage com uma tela (ex.: toca em "Buscar alunos").
-2. A tela chama `fetch()` para um endpoint da API (ex.: `alunos.php`), usando o método HTTP adequado:
-   - `GET` para consultar
-   - `POST` para cadastrar
-   - `PUT` para editar ou excluir (logicamente)
-3. O arquivo PHP correspondente recebe a requisição, usa **PDO com prepared statements** (`prepare()` +
-   `bindValue()` + `execute()`) para conversar com o MySQL de forma segura.
-4. O PHP devolve os dados em **JSON**.
-5. O app recebe a resposta, guarda em um estado (`useState`) e a tela é redesenhada automaticamente.
-
-## Banco de dados
-
-Banco: `escola` (MySQL). Principais tabelas: `alunos`, `professores`, `coordenadores`, `cursos`,
-`disciplinas`, `turmas`, `matriculas`, `avaliacoes`, `boletins`, `responsaveis`, além de tabelas de apoio
-reaproveitadas por várias entidades: `contatos` (telefone/e-mail), `ruas`, `bairros`, `cidade`, `uf`
-(endereço) e `formacoes` (formação acadêmica de professores/coordenadores).
-
-## Como rodar
-
-1. **API (XAMPP):** copie a pasta `app_scholar_api` para `C:\xampp\htdocs\` e inicie Apache + MySQL.
-2. **App (Expo Snack):** cole os arquivos deste projeto no Snack, mantendo a estrutura de pastas acima.
-3. Ajuste o IP em `src/services/api.js` para o IPv4 atual do computador (`ipconfig` no Windows).
-4. Abra o app pelo **Expo Go no celular**, conectado à mesma rede Wi-Fi do computador — a prévia Web do
-   Snack (HTTPS) não consegue falar com a API local (HTTP puro) por uma restrição de segurança do
-   navegador (Mixed Content).
-
-## Segurança e limitações (projeto didático)
-
-- CORS liberado para qualquer origem (`Access-Control-Allow-Origin: *`) — adequado para o ambiente local
-  de estudo, mas numa aplicação real em produção isso deveria ser restrito a domínios específicos.
-- Não há autenticação de usuário nem HTTPS — fora do escopo desta atividade, que tem foco na comunicação
-  básica entre app, API e banco.
-- Alguns relacionamentos (ex.: curso de uma turma, aluno de uma matrícula) são informados por ID digitado
-  manualmente, sem um seletor de nomes — simplificação proposital para manter o projeto enxuto.
+## 6. Se algo não funcionar
+- Confirme usuário/senha do MySQL em `conexao.php` (padrão XAMPP: `root` / senha vazia).
+- Se o IP do PC mudar, atualize `src/services/api.js` no Snack.
+- Celular e PC precisam estar na mesma rede Wi-Fi, com o Apache ativo no XAMPP.
